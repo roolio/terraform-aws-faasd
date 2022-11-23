@@ -39,7 +39,7 @@ resource "aws_security_group" "faasd" {
   vpc_id      = var.vpc_id
 
   dynamic "ingress" {
-    for_each = toset(var.domain == "" ? [8080] : [80, 443])
+    for_each = toset(var.domain == "" ? [8080, 22] : [80, 443, 22])
     content {
       cidr_blocks = [
         "0.0.0.0/0"
